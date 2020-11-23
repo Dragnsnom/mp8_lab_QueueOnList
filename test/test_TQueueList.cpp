@@ -1,5 +1,4 @@
 #include "Queue.h"
-#include "Queue.cpp"
 #include <gtest.h>
 
 TEST(TQueueList, can_create_QueueList)

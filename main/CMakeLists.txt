@@ -2,4 +2,4 @@ file(GLOB hdrs "*.h*") #Добавляем в переменную hdrs все �
 file(GLOB srcs "*.cpp")#Добавляем в переменную srcs все файлы с расширением .h
 add_executable(${main} ${srcs} ${hdrs})
 
-target_link_libraries(${main} ${List} ${StackLib} ${QueueLib}) 
+target_link_libraries(${main} ${List} ${QueueLib}) 
