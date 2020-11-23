@@ -31,9 +31,9 @@ TEST(TQueueList, can_push)
 TEST(TQueueList, can_get_elem)
 {
 	TQueueList<int> qe;
-	qe.Push(5);
+	qe.Push(3);
 
-	EXPECT_EQ(5, qe.Get());
+	EXPECT_EQ(3, qe.Get());
 }
 
 TEST(TQueueList, cant_get_if_empty)
