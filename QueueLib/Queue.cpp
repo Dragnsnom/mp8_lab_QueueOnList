@@ -7,9 +7,6 @@
 template<class T>
 TQueueList<T>::TQueueList()
 {
-    list.root = 0;
-    list.end = 0;
-    list.count = 0;
 }
 
 template<class T>

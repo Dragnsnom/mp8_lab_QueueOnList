@@ -28,13 +28,13 @@ TEST(TQueueList, can_push)
 	ASSERT_NO_THROW(qe.Push(3));
 }
 
-//TEST(TQueueList, can_get_elem)
-//{
-//	TQueueList<int> qe;
-//	qe.Push(4);
-//
-//	EXPECT_EQ(4, qe.Get());
-//}
+TEST(TQueueList, can_get_elem)
+{
+	TQueueList<int> qe;
+	qe.Push(4);
+
+	EXPECT_EQ(4, qe.Get());
+}
 
 TEST(TQueueList, cant_get_if_empty)
 {
