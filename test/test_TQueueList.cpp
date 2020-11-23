@@ -4,7 +4,7 @@
 
 TEST(TQueueList, can_create_QueueList)
 {
-  ASSERT_NO_THROW(TQueueList<int> qe);
+	ASSERT_NO_THROW(TQueueList<int> qe);
 }
 
 TEST(TQueueList, create_empty_QueueList)
@@ -31,9 +31,9 @@ TEST(TQueueList, can_push)
 TEST(TQueueList, can_get_elem)
 {
 	TQueueList<int> qe;
-	qe.Push(3);
+	qe.Push(4);
 
-	EXPECT_EQ(3, qe.Get());
+	EXPECT_EQ(4, qe.Get());
 }
 
 TEST(TQueueList, cant_get_if_empty)

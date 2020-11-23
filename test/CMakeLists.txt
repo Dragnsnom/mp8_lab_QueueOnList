@@ -1,4 +1,4 @@
-set(target test)
+set(target test_mp8)
 
 file(GLOB hdrs "*.h*")
 file(GLOB srcs "*.cpp")
