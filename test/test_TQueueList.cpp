@@ -31,6 +31,8 @@ TEST(TQueueList, can_get_elem)
 {
 	TQueueList<int> qe;
 	qe.Push(4);
+	qe.Push(2);
+	qe.Push(1);
 
 	EXPECT_EQ(4, qe.Get());
 }
@@ -46,6 +48,8 @@ TEST(TQueueList, can_copy_QueueList)
 {
 	TQueueList<int> qe1;
 	qe1.Push(1);
+	qe1.Push(4);
+	qe1.Push(15);
 
 	ASSERT_NO_THROW(TQueueList<int> qe2(qe1));
 }
@@ -68,36 +72,26 @@ TEST(TQueueList, can_get_count)
 	EXPECT_EQ(2, qe.GetCount());
 }
 
-TEST(TQueueList, DOP_can_save_in_file_DOP)
-{
-	TQueueList<int> qe;
-	qe.Push(10);
-	qe.Push(20);
-	qe.Push(30);
-	qe.Push(40);
-	ASSERT_NO_THROW(qe.File());
-}
-
 TEST(TQueueList, DOP_can_get_max_elem_DOP)
 {
 	TQueueList<int> qe;
 	qe.Push(1);
-	qe.Push(7);
-	qe.Push(3);
-	qe.Push(14);
-	qe.Push(61);
 	qe.Push(2);
-	EXPECT_EQ(61, qe.Max_elem());
+	qe.Push(5);
+	qe.Push(134);
+	qe.Push(0);
+	qe.Push(2);
+	EXPECT_EQ(134, qe.Max_elem());
 }
 
 TEST(TQueueList, DOP_can_get_min_elem_DOP)
 {
 	TQueueList<int> qe;
 	qe.Push(1);
-	qe.Push(7);
+	qe.Push(2);
+	qe.Push(5);
+	qe.Push(134);
 	qe.Push(3);
-	qe.Push(14);
-	qe.Push(61);
 	qe.Push(2);
 	EXPECT_EQ(1, qe.Min_elem());
 }

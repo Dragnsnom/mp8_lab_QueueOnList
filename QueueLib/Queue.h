@@ -1,7 +1,5 @@
 #ifndef _QUEUELIST_
 #define _QUEUELIST_
-#include <iostream>
-#include <fstream>
 #include "TList.h"
 
 using namespace std;
@@ -14,20 +12,18 @@ protected:
 public:
     TQueueList();
     TQueueList(TQueueList<T>& _v);
-    ~TQueueList();
 
     TQueueList<T>& operator =(TQueueList<T>& _v);
 
-    void Push(T d); //Вставка элемента
-    T Get(); //Получение элемента
+    void Push(T d); 
+    T Get(); 
 
-    int IsEmpty(void) const; // контроль пустоты
-    int IsFull(void) const; //контроль переполнения
+    int IsEmpty(void) const; 
+    int IsFull(void) const; 
 
-    //DOP
+    //доп
     T Min_elem();
     T Max_elem();
-    void File();
 
     template <class T1>
     friend ostream& operator<< (ostream& ostr, const TQueueList<T1>& A);
@@ -35,25 +31,31 @@ public:
     friend istream& operator>> (istream& istr, TQueueList<T1>& A);
 
     int GetCount();
+
 };
+
+template<class T1>
+inline ostream& operator<<(ostream& ostr, const TQueueList<T1>& A)
+{
+    return ostr << A.list;
+}
+
+template<class T1>
+inline istream& operator>>(istream& istr, TQueueList<T1>& A)
+{
+    return istr >> A.list;
+}
 
 template<class T>
 inline TQueueList<T>::TQueueList()
 {
-    
+ 
 }
 
 template<class T>
 inline TQueueList<T>::TQueueList(TQueueList<T>& _v)
 {
     list = _v.list;
-}
-
-template<class T>
-inline TQueueList<T>::~TQueueList()
-{
-
-    list.~TList();
 }
 
 template<class T>
@@ -81,7 +83,7 @@ inline T TQueueList<T>::Get()
 {
     if (list.IsEmpty())
     {
-        throw "Error";
+        throw logic_error ("Error");
     }
 
     T tmp = list.GetFirst()->GetData();
@@ -105,79 +107,53 @@ template<class T>
 inline T TQueueList<T>::Min_elem()
 {
     int count = this->GetCount();
-    T temp = NULL;
+    T tmp = NULL;
     for (int i = 0; i < count; i++)
     {
-        if (temp == NULL)
+        if (tmp == NULL)
         {
-            temp = this->Get();
+            tmp = this->Get();
         }
         else
         {
-            T temp_for = this->Get();
-            if (temp_for < temp)
+            T tmp_for = this->Get();
+            if (tmp_for < tmp)
             {
-                temp = temp_for;
+                tmp = tmp_for;
             }
         }
     }
-    return temp;
+    return tmp;
 }
 
 template<class T>
 inline T TQueueList<T>::Max_elem()
 {
     int count = this->GetCount();
-    T temp = NULL;
+    T tmp = NULL;
     for (int i = 0; i < count; i++)
     {
-        if (temp == NULL)
+        if (tmp == NULL)
         {
-            temp = this->Get();
+            tmp = this->Get();
         }
         else
         {
-            T temp_for = this->Get();
-            if (temp_for > temp)
+            T tmp_for = this->Get();
+            if (tmp_for > tmp)
             {
-                temp = temp_for;
+                tmp = tmp_for;
             }
         }
     }
-    return temp;
+    return tmp;
 }
 
-template<class T>
-inline void TQueueList<T>::File()
-{
-    ofstream outf("DataQueue.txt");
-    if (!outf)
-    {
-        throw "Error file";
-    }
-    int temp = this->GetCount();
-    for (int i = 0; i < temp; i++)
-    {
-        outf << this->Get() << endl;
-    }
-}
 
 template<class T>
 inline int TQueueList<T>::GetCount()
 {
     return list.GetCount();
-}
-
-template<class T1>
-inline ostream& operator<<(ostream& ostr, const TQueueList<T1>& A)
-{
-    return ostr << A.list;
-}
-
-template<class T1>
-inline istream& operator>>(istream& istr, TQueueList<T1>& A)
-{
-    return istr >> A.list;
 }
 
 #endif

@@ -45,14 +45,14 @@ public:
 
     TList<T>& operator =(TList<T>& _v);
 
-    void InsFirst(T d); //Вставка элемента
-    void InsLast(T d); //Вставка элемента
-    void Ins(TListElem<T>* e, T d); //Вставка элемента
-    bool IsFull(void) const; // контроль пустоты
-    bool IsEmpty(void) const; // контроль пустоты
+    void InsFirst(T d); 
+    void InsLast(T d); 
+    void Ins(TListElem<T>* e, T d); 
+    bool IsFull(void) const; 
+    bool IsEmpty(void) const; 
 
-    TListElem<T>* GetFirst(); //Получение элемента
-    TListElem<T>* GetLast(); //Получение элемента
+    TListElem<T>* GetFirst(); 
+    TListElem<T>* GetLast(); 
 
     void DelFirst();
     void DelLast();
@@ -216,7 +216,7 @@ inline void TList<T>::InsFirst(T d)
 {
     if (this->IsFull())
     {
-        throw "Error";
+        throw logic_error ("Error");
     }
 
     TListElem<T>* temp = new TListElem<T>(d);
@@ -234,7 +234,7 @@ inline void TList<T>::InsLast(T d)
 {
     if (this->IsFull())
     {
-        throw "Error";
+        throw logic_error("Error");
     }
 
     if (end == 0)
@@ -268,13 +268,12 @@ inline void TList<T>::Ins(TListElem<T>* e, T d)
 template<class T>
 inline bool TList<T>::IsFull(void) const
 {
-    try
-    {
+    try {
         TListElem<T>* temp = new TListElem<T>(0);
         delete temp;
         return false;
     }
-    catch (...)
+    catch (const std::exception&)
     {
         return true;
     }
@@ -283,7 +282,16 @@ inline bool TList<T>::IsFull(void) const
 template<class T>
 inline bool TList<T>::IsEmpty(void) const
 {
-    return count == 0;
+    try
+    {
+        return count == 0;
+        return true;
+    }
+    catch (const std::exception&)
+    {
+        return false;
+    }
+
 }
 
 template<class T>
